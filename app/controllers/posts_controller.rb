@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+
   def create
     @post = Post.new(params.require(:post).permit(:title, :body))
     if @post.save
@@ -30,6 +31,5 @@ class PostsController < ApplicationController
       flash[:error] = "There was an error saving the post. Please try again."
       render: edit
     end
-  end
   end
 end
