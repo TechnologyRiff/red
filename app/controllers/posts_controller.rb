@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash[:error] = "There was an error saving the post. Please try again."
-      render: edit
+      render :edit
     end
   end
 end
