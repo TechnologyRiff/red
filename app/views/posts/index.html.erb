@@ -6,10 +6,11 @@
     	<div class="media">
     		<div class="media-body">
     			<h4 class="media-heading">
-						<%= link_to post.name, post %>
+						<%= link_to post.title, [@topic, post] %>
+						<p><%# link_to post %></p>
 					</h4>
 					<small>
-						<%= post.description %>
+						<%= post.body %>
 					</small>
 				</div>
 			</div>
