@@ -1,9 +1,5 @@
 class Post < ActiveRecord::Base
 	has_many :comments
-
-	#def title
-	#end
-
 	belongs_to :user
 		belongs_to :topic
 
