@@ -29,6 +29,12 @@ gem 'pundit'
 
 gem 'redcarpet'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'fog'
+
 group :doc do
 	gem 'sdoc', require: false
 end
