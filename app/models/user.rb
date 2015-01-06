@@ -5,15 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :posts
   has_many :comments
-  	mount_uploader :avatar, AvatarUploader
+    mount_uploader :avatar, AvatarUploader
 
  
  def admin?
- 	role == 'admin'
+  role == 'admin'
  end
 
  def moderator?
- 	role == 'moderator'
+  role == 'moderator'
  end
 
 end

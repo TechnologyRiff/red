@@ -37,22 +37,22 @@ gem 'fog'
 
 gem 'will_paginate', '~> 3.0.5'
 group :doc do
-	gem 'sdoc', require: false
+  gem 'sdoc', require: false
 end
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
 group :production do 
-	gem 'pg'
-	gem 'rails_12factor'	
+  gem 'pg'
+  gem 'rails_12factor'  
 end
 
 group :development do 
-	gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :test do
-	gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.1.0'
 end
 
 # Use ActiveModel has_secure_password
