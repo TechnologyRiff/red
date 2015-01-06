@@ -1,20 +1,14 @@
-<%#Comment partial
-Create a _comment.html.erb partial in the comments directory. Use it in the posts#show view to show the body of each comment already associated with the post. Whereas our above form partial should render the form for submitting a new comment, this comment partial should render the relevant information for a single preexisting comment associated with our @post. Because this partial renders a single comment, we need to call it multiple times -- rendering a partial for each comment in @comments. This is a good candiate for an each loop. %>
- 
-<% @comments.each do |comment| %>
-    <%= post.comment.body %>
-<% end %>
-
-<%= form_for [@post, comment] do |f| %>
-	<% if comment.errors.any? %>
-		<div class="alert alert-danger">
-			<h4>There are <%= pluralize(comment.errors.count, "error") %>.</h4>
-				<% end %>
-	<%= form_group_tag(comment.errors[:body]) do %>
-		<%= f.label :body %>
-		<%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter comment" %>
-		<% end %>
-	<div class="form-group">
-		<%= f.submit "Save", class: 'btn btn-success' %>
+<div class="media">
+	<%= link_to '#' class: 'pull-left' do %>
+		<%= image_tag(comment.user.avatar.small.url) if comment.user.avatar? %>
+	<% end %>
+	<div class="media-body">
+		<small>
+			<%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
+			<% if policy(comment).destroy? %>
+			| <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
+			<% end %>
+		</small>
+		<p><%= comment.body %></p>
 	</div>
-<% end %>
+</div>
