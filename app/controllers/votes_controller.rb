@@ -1,14 +1,13 @@
-Class VotesController < ApplicationController
+class VotesController < ApplicationController
   before_action :load_post_and_vote
-  end
   
   def up_vote
-    update_vote!
+    update_vote!(1)
     redirect_to :back
   end
 
   def down_vote
-    update_vote!
+    update_vote!(-1)
     redirect_to :back
   end
 
@@ -25,7 +24,7 @@ Class VotesController < ApplicationController
     else
       @vote = current_user.votes.build(value: new_value, post: @post)
       authorize @vote, :create?
-      @vote save
+      @vote.save
     end
   end
 end
