@@ -36,6 +36,10 @@ class Post < ActiveRecord::Base
       new_rank = points + age_in_days
     end
 
+    def create_vote
+      user.votes.create(post: self, value: 1)
+    end
+    
     private
 
     def render_as_markdown(text)
