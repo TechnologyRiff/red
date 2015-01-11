@@ -24,11 +24,12 @@ describe Comment do
 
       @comment.save
     end
-      end
+  end
 
       context "without permission" do
 
-        before { @user.update_attribute(:email_favorites, false) }
+        before { 
+          @user.update_attribute(:email_favorites, false) }
 
         it "does not send emails, even to users who have favorited" do
           @user.favorites.where(post: @post).create
