@@ -1,5 +1,8 @@
+require 'rails_helper'
 describe Topic do
   describe "scopes" do
+    
+    include TestFactories
 
     before do
       @public_topic = Topic.create

@@ -7,13 +7,13 @@ describe Vote do
       it "only allows -1 or 1 as values" do
        
         v = Vote.new(value: 1)
-          v.valid? #=> true
+          expect(v.valid?).to eq(true)
 
         v2 = Vote.new(value: -1)
-          v2.valid? #=> true
+          expect(v2.valid?).to eq(true)
 
-        v3 = Vote.new(value: 2)
-          v3.valid? #=> false
+        bad_v = Vote.new(value: 2)
+          expect(bad_v.valid?).to eq(false)
         end
       end
     end
