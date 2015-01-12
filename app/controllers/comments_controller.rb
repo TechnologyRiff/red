@@ -6,11 +6,10 @@ class CommentsController < ApplicationController
   # end
 
   def create
-    @comment = Comment.find(params[:post_id, :current_user])
-    @comment = current_user.comments.build(require(:comment).permit(:title, :body)
-    @post.topic = @topic
-     authorize @post
-     authorize @user
+    @post = Post.find(params[:post_id])
+    @comment = current_user.comments.build(params.require(:comment).permit(:body))
+    redirect_to [@post.topic, @post]
+    # authorize @post
    end
 
   def destroy
