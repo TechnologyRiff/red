@@ -1,8 +1,8 @@
 require 'rails_helper'
 describe Topic do
+   include TestFactories
+
   describe "scopes" do
-    
-    include TestFactories
 
     before do
       @public_topic = Topic.create
@@ -23,12 +23,13 @@ describe Topic do
 
     describe "visible_to(user)" do
       it "returns all topics if the user is present" do
-        user = true # sneaky solution; we don't need a real user, just something truthy
-
+        user = authenticated_user
+        expect(Topic.visible_to(user)).to eq( Topic.all )
       end
 
       it "returns only public topics if user is nil" do
-        user
+        user = nil
+        expect(Topic.visible_to(user)).to eq( [@public_topic] )
 
       end
     end
