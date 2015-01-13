@@ -1,6 +1,5 @@
 require 'rails_helper'
 describe Topic do
-   include TestFactories
 
   describe "scopes" do
 
@@ -23,7 +22,7 @@ describe Topic do
 
     describe "visible_to(user)" do
       it "returns all topics if the user is present" do
-        user = authenticated_user
+        user = create(:user)
         expect(Topic.visible_to(user)).to eq( Topic.all )
       end
 
