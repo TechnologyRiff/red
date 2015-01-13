@@ -3,68 +3,68 @@ class PostsController < ApplicationController
     @posts = Post.visible_to(current_user).where("posts.created_at > ?", 7.days.ago).paginate(page: params[:page], per_page: 10)
   end
 
-  def show
-     @topic = Topic.find(params[:topic_id])
-     @post = Post.find(params[:id])
-     @comments = @post.comments
-     authorize @topic
-  end
+  # def show
+  #    @topic = Topic.find(params[:topic_id])
+  #    @post = Post.find(params[:id])
+  #    @comments = @post.comments
+  #    authorize @topic
+  # end
 
-  def new
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.new
-    authorize @post
-  end
+  # def new
+  #   @topic = Topic.find(params[:topic_id])
+  #   @post = Post.new
+  #   authorize @post
+  # end
 
-  def create
-    @topic = Topic.find(params[:topic_id])
-    @post = current_user.posts.build(post_params)
-    @post.topic = @topic
-    authorize @post
+  # def create
+  #   @topic = Topic.find(params[:topic_id])
+  #   @post = current_user.posts.build(post_params)
+  #   @post.topic = @topic
+  #   authorize @post
 
-    if @post.save_with_initial_vote
-      flash[:notice] = "Post was saved."
-      redirect_to [@topic, @post]
-    else
-      flash[:error] = "There was an error saving the post. Please try again."
-      render :new
-    end
-  end
+  #   if @post.save_with_initial_vote
+  #     flash[:notice] = "Post was saved."
+  #     redirect_to [@topic, @post]
+  #   else
+  #     flash[:error] = "There was an error saving the post. Please try again."
+  #     render :new
+  #   end
+  # end
 
-  def edit
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:id])
-    authorize @post
-  end
+  # def edit
+  #   @topic = Topic.find(params[:topic_id])
+  #   @post = Post.find(params[:id])
+  #   authorize @post
+  # end
   
-  def update
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:id])
-    authorize @post
+  # def update
+  #   @topic = Topic.find(params[:topic_id])
+  #   @post = Post.find(params[:id])
+  #   authorize @post
     
-    if @post.update_attributes(post_params)
-      flash[:notice] = "Post was updated."
-      redirect_to [@topic, @post]
-    else
-      flash[:error] = "There was an error saving the post. Please try again."
-      render :edit
-    end
-  end
+  #   if @post.update_attributes(post_params)
+  #     flash[:notice] = "Post was updated."
+  #     redirect_to [@topic, @post]
+  #   else
+  #     flash[:error] = "There was an error saving the post. Please try again."
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:id])
-    title = @post.title
-    authorize @post
+  # def destroy
+  #   @topic = Topic.find(params[:topic_id])
+  #   @post = Post.find(params[:id])
+  #   title = @post.title
+  #   authorize @post
 
-    if @post.destroy
-      flash[:notice] = "\"#{title}\" was deleted successfully."
-      redirect_to @topic
-    else
-      flash[:error] = "There was an error deleting the post."
-      render :show
-    end
-  end
+  #   if @post.destroy
+  #     flash[:notice] = "\"#{title}\" was deleted successfully."
+  #     redirect_to @topic
+  #   else
+  #     flash[:error] = "There was an error deleting the post."
+  #     render :show
+  #   end
+  # end
 
 private
 
