@@ -1,21 +1,5 @@
 Bloccit::Application.routes.draw do
 
-  get 'comments/index'
-
-  get 'comments/edit'
-
-  get 'comments/create'
-
-  get 'comments/show'
-
-  get 'topics/index'
-
-  get 'topics/new'
-
-  get 'topics/show'
-
-  get 'topics/edit'
-
   devise_for :users
     resources :users, only: [:update, :show, :index]
   resources :topics do
