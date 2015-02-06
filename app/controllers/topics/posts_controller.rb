@@ -2,7 +2,7 @@ class Topics::PostsController < ApplicationController
   
   def index
     @topics = Topics.search(params[:search])
-    @posts = Posts.search)params[:search]
+    @posts = Posts.search(params[:search])
     # if params[:search]
     #   @topics = Topic.visible_to(current_user).find(:all, conditions => ['name like ?', "%#{params[:search]}"]).paginate(page: params[:page], per_page: 10)
     #   @posts = Post.visible_to(current_user).find(:all, conditions =>['name like ?', "%#{params[:search]}"]).paginate(page: params[:page], per_page: 10)
