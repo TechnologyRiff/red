@@ -1,26 +1,42 @@
 <br/>
 <div class="jumbotron">
-<h1>Bloccit</h1>
-  <p>Bloccit is a resource for sharing links with your friends!</p>
-  <p>
-    <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
-    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+  <h1>Bloccit</h1>
+    <p>Bloccit is a resource for sharing links with your friends!</p>
 
-  </p>
+    <% unless current_user %>
+    <p>
+      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+    </p>
+
+    <% end %>
 </div>
-
-<div class="row">
-  <div class="col-md-4">
-    <h2>Store</h2>
-    <p>Use Bloccit to capture information for future use.</p>
-  </div>
-  <div class="col-md-4">
-    <h2>Share</h2>
-    <p>Share useful information and resources with your friends (or that new, hilarious, cat video). </p>
-  </div>
-  <div class="col-md-4"> 
-    <h2>Search</h2>
-    <p>Can't remember where that old, hilarious, cat video came from? Use Bloccit to find it again. </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Store</h2>
+      <p>Use topics and posts to capture and organize information for future use.</p>
+      <% if current_user %>
+        <%= link_to "Browse Topics", topics_path, class: 'btn btn-primary' %>
+        <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h2>Share</h2>
+      <p>Share useful information and resources with your friends (or that new, hilarious, cat video). </p>
+    </div>
+    <div class="col-md-4"> 
+      <h2>Search</h2>
+      <p>Can't remember where that old, hilarious, cat video came from? Use Bloccit to find it again. </p>
+        <% if current_user %>
+          <%= form_tag topics_path, method: :get do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+          <% end %>
+        <% end %>
+    </div>
   </div>
 </div>
 

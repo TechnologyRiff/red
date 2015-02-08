@@ -7,6 +7,7 @@ class Topics::PostsController < ApplicationController
        @topics = Topic.visible_to(current_user).find(:all, conditions => ['name like ?', "%#{params[:search]}"]).paginate(page: params[:page], per_page: 10)
        @posts = Post.visible_to(current_user).find(:all, conditions =>['name like ?', "%#{params[:search]}"]).paginate(page: params[:page], per_page: 10)
     end
+  end
 
 
   def show
