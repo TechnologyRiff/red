@@ -7,7 +7,6 @@ gem 'rails', '4.1.8'
 gem 'sass-rails', '~> 4.0.3'
 # bootstrap for twitter
 gem 'bootstrap-sass', '~> 3.3.1'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -39,7 +38,6 @@ gem 'mini_magick'
 gem 'fog'
 
 gem 'will_paginate', '~> 3.0.5'
-
 group :doc do
   gem 'sdoc', require: false
 end
@@ -58,8 +56,8 @@ end
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara'
-  gem 'database_cleaner'
-  gem 'factory_girl_rails', '~>4.0'
+    gem 'database_cleaner'
+      gem 'factory_girl_rails', '~>4.0'
 end
 
 # Use ActiveModel has_secure_password
