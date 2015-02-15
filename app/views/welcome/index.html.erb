@@ -1,7 +1,7 @@
 <br/>
 <div class="jumbotron">
-  <h1>Riff-it</h1>
-    <p>Riff-it is a resource for sharing links with your friends!</p>
+  <h1>Mark-it</h1>
+    <p>Mark-it is a resource for sharing links with your friends!</p>
 
     <% unless current_user %>
     <p>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-4"> 
       <h2>Search</h2>
-      <p>Can't remember where that old, hilarious, cat video came from? Use Riff-it to find it again. </p>
+      <p>Can't remember where that old, hilarious, cat video came from? Use Mark-it to find it again. </p>
         <% if current_user %>
           <%= form_tag topics_path, method: :get do %>
           <p>
